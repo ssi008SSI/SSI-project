@@ -1,5 +1,6 @@
 const express = require('express');
 const route = express.Router()
+const First=require("../../models/first");
 const services = require('../services/render');
 const controller = require('../controller/controller');
 /**
@@ -38,10 +39,11 @@ route.get("/table", (req, res) => {
   res.render("table")
 });
 route.get("/mcq", (req, res) => {
-    Questions.find({},(err, data) => {
+    First.find({},(err, data) => {
         res.render("mcq", {
             use1:data
         });
+        console.log(data)
         console.log(err);
     });
 });

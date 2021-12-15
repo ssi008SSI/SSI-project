@@ -26,27 +26,13 @@ app.use(express.static(__dirname + '/public'));
 app.use('/', require('./server/routes/router'))
 app.set('view engine', 'ejs');
 app.set("views", template_path);
-// create new user database
-app.post("/", async (req, res) => {
-    try {
-        // console.log(req.body.firstname);
-        // res.send(req.body.firstname); 
-        const password = req.body.password;
-        const cpassword = req.body.confirmpassword;
-        if (password === cpassword) {
-        } else {
-            res.send("password are not matching")
-        }
-    } catch (error) {
-        res.status(400).send(error);
-    }
-})
+
 //POST request for admin login
 app.post('/login',(req,res)=>{
     if(req.body.email==credential.email&&req.body.password==credential.password){
         res.redirect('/admin');
-
-    }else{
+    }
+    else{
         res.end("invalid Username")
     }
 });
@@ -60,8 +46,8 @@ app.post('/register', async (req, res) => {
         const user = await Register.findOne({ email });
         console.log(user);
         if (user != null) {
-            // res.status(403).json({ message: 'user already exists' });
-            console.log("already registered")
+            alert("Your response has already been submitted!");
+            res.redirect("/")
         }
         else
         {

@@ -3,8 +3,8 @@
     <!-- MCQ - Start -->
     <div class="wrapper mb-4 ">
         <div class="container card-body align-self-center">
-            <% for(var j=0;j<use1.length;j++) { %> 
-            <h6><%= use1[j].description %></h6>
+            <% use1.forEach(function(neww){   %> 
+            <h6><%= neww.Question %></h6>
             <hr>
             <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
                 laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
@@ -12,42 +12,36 @@
             <form action="/mcq" method="POST">
             <div class="">
                 <div class="checkbox form-check my-3">
-                 <% for(var i=0; i<= use1[j].alternatives.length; i++) { %>
                     <input class=" checkbox form-check-input" type="checkbox" name="ans"
-                        id="flexRadioDefault1" value="<%= use1[j].alternatives[i].text %>">
+                        id="flexRadioDefault1" value="<%= neww.Option1 %>">
                 <label class="checkbox form-check-label" for="flexRadioDefault1" name="ans" >
-                    <%= use1[j].alternatives[i].text %>
-                    <% i++ %>
+                    <%= neww.Option1 %>
                 </label>
                 </div>
                 <div class="checkbox form-check my-3">
                     <input class=" checkbox form-check-input" type="checkbox" name="ans"
-                        id="flexRadioDefault1" value="<%= use1[j].alternatives[i].text %>">
+                        id="flexRadioDefault1" value="<%= neww.Option2 %>">
                 <label class="checkbox form-check-label" for="flexRadioDefault1" name="ans" >
-                    <%= use1[j].alternatives[i].text %>
-                    <% i++ %>  
+                    <%=neww.Option2 %>
+                    
                 </label>
                 </div>
                 <div class="checkbox form-check my-3">
                     <input class=" checkbox form-check-input" type="checkbox" name="ans"
-                        id="flexRadioDefault1" value="<%= use1[j].alternatives[i].text %>">
+                        id="flexRadioDefault1" value="<%= neww.Option3 %>">
                 <label class="checkbox form-check-label" for="flexRadioDefault1" name="ans" >
-                    <%= use1[j].alternatives[i].text %>
-                    <% i++ %>
+                    <%= neww.Option3 %>
                 </label>
                 </div>
                 <div class="checkbox form-check my-3">
                     <input class=" checkbox form-check-input" type="checkbox" name="ans"
-                        id="flexRadioDefault1" value="<%=use1[j].alternatives[i].text %>">
+                        id="flexRadioDefault1" value="<%=neww.Option4 %>">
                 <label class="checkbox form-check-label" for="flexRadioDefault1" name="ans" >
-                    <%= use1[j].alternatives[i].text %>
-                    <% i++ %> 
+                    <%= neww.Option4 %> 
                 </label>
                 </div>
-                <% } %>
             </div>
-            <% j++ %> 
-            <% }%>
+            <% });%>
             <div class="d-flex justify-content-center">
                 <button type="submit" class="btn rounded-pill  btn-dark px-4">Continue</button>
             </div>
