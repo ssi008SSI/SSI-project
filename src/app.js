@@ -28,35 +28,6 @@ app.use(express.static(__dirname + '/public'));
 app.use('/', require('./server/routes/router'))
 app.set('view engine', 'ejs');
 app.set("views", template_path);
-app.get("/", (req, res) => {
-    res.render("register");
-});
-app.get("/login", (req, res) => {
-    res.render("base");
-});
-app.get("/permission", (req, res) => {
-    res.render("permission");
-});
-app.get("/instructions", (req, res) => {
-    res.render("instructions");
-});
-app.get("/table", (req, res) => {
-  res.render("table")
-});
-app.get("/mcq", (req, res) => {
-    Questions.find({},(err, data) => {
-        res.render("mcq", {
-            use1:data
-        });
-        console.log(err);
-    });
-});
-app.get("/essay", (req, res) => {
-    res.render("essay");
-});
-app.get("/final", (req, res) => {
-    res.render("final");
-});
 // create new user database
 app.post("/", async (req, res) => {
     try {
@@ -94,11 +65,11 @@ app.post('/register', async (req, res) => {
             // res.status(403).json({ message: 'user already exists' });
             console.log("already registered")
         }
-        else{
+        else
+        {
         const newUser = new Register({ email, password, confirmpassword: password, username: firstname })
         await newUser.save()
         res.redirect('permission')
-    
                 app.post('/mcq', async (req, res) => {
                     let { ans } = req.body;
                     console.log({ ans });
