@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link
+  href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+  rel="stylesheet"
+/>
+  <!-- bootstrap -->
+  <link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+  crossorigin="anonymous"
+/>
+<!-- CSS -->
+<link rel="stylesheet" href="css/second.css">
+</head>
+<body>
+  <div class="wrapper">
+  <div class="container  text-center ">
+    <h2 class="mb-4" >
+      System Check
+    </h2>
+      <div class="mb-4 px-5">
+        <img src="images/undraw_Designer_re_5v95.svg" width="250" class="img-fluid" />
+      </div>
+      <p class="mb-4 f-h5">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, eatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit</p>
+  <div id="permission-success" class="row" style="display:none;">
+    <div class="col-lg-4">
+      <h6 class="mb-0">Network</h6>
+      <img src="images/wifi.png" width="100px" class="img-fluid" >
+      <p>Checking your network connectivity</p>
+    </div>
+    <div class="col-lg-4">
+      <h6 class="mb-0">Webcam</h6>
+      <img src="images/photograph.png" width="100px" class="img-fluid" >
+      <p>Checking your webcam</p>
+    </div>
+    <div class="col-lg-4">
+      <h6 class="mb-0">Microphone</h6>
+      <img src="images/voice-recorder.png" width="100px" class="img-fluid" >
+      <p>Checking your microphone </p>
+    </div>
+  </div>
+  <div id="permission-error" class="row">
+    <div class="col-lg-4">
+      <h6 class="mb-0">Network</h6>
+      <img src="images/no-signal.png" width="100px" class="img-fluid" >
+      <p>Checking your network connectivity</p>
+    </div>
+    <div class="col-lg-4">
+      <h6 class="mb-0">Webcam</h6>
+      <img src="images/cameras.png" width="100px" class="img-fluid" >
+      <p>Checking your webcam</p>
+    </div>
+    <div class="col-lg-4">
+      <h6 class="mb-0">Microphone</h6>
+      <img src="images/mute.png" width="100px" class="img-fluid" >
+      <p>Checking your microphone </p>
+    </div>
+  </div>
+  <a id="continue" href="/instructions"  class="btn btn-primary rounded-pill px-4">Continue</a>
+</div> 
+<div class="webcam-capture">
+<video id="webcam" class="video-section" autoplay width="180px" height="110px"></video>
+</div>
+<script src="../js/webcam.js"></script>
+  </div>
+</body>
+</html>

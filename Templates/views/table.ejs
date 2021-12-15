@@ -1,0 +1,60 @@
+<%- include('header'); -%>
+    <!-- Navbar - End -->
+    <div class="wrapper">
+        <div class="container  align-self-center">
+            <h2 class="mb-4 text-center">List</h2>
+            <div class="row">
+              <div class=" mb-4 px-5 col-lg-4">
+                <img src="images/undraw_chore_list_re_2lq8.svg" width="350" class="img-fluid" />
+              </div>
+              <div class="col-lg-8 table-responsive">
+            <table class="table table-borderless ">
+                <thead class="table-dark ">
+                  <tr>
+                    <th scope="col">Question</th>
+                    <th scope="col">Navigate</th>
+                  </tr>
+                </thead>
+                <tbody class="fs-6">
+                  <% u.forEach(function(neww){ %> 
+                  <tr>
+                    <td><%= neww.Question %>  </td>
+                    <td><a href="/mcq" class="btn btn-dark rounded-pill">Go</a></td>
+                  </tr>
+                  <% }); %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        <div class="text-center">
+          <form action="/table" method="post">
+            <input type="submit" onclick="myFunction()" class="btn btn-dark rounded-pill" value="continue">
+          </form>
+        </div>
+    </div>
+    </div>
+        <div class="webcam-capture">
+            <video id="webcam" class="video-section" autoplay="true" width="180px" height="110px"></video>
+        </div>
+    {{!-- <script src="../js/timer.js"></script> --}}
+    <script>
+        function myFunction(){
+    //window.onload = function () {
+    var minute = 50;
+    var sec = 60;
+    setInterval(function () {
+        document.getElementById("timer").innerHTML = minute + " : " + sec;
+        sec--;
+        if (sec == 00) {
+            minute--;
+            sec = 60;
+            if (minute == 0) {
+                minute = 5;
+            }
+        }
+    }, 1000);
+}
+// }
+    </script>
+</body>
+</html>
