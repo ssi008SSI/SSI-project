@@ -1,8 +1,7 @@
 const express = require("express");
-const bodyParser = require("body-parser")
 const path = require("path");
 const app = express();
-const db= require("./db/conn.js");
+require("./db/conn.js");
 const Register = require("./models/registers");
 const Response = require("./models/userResponse");
 const port = process.env.PORT || 3000;
@@ -46,7 +45,6 @@ app.post('/register', async (req, res) => {
         console.log(user);
         if (user != null) {
             console.log("Your response has already been submitted!");
-            
         }
         else
         {

@@ -7,7 +7,6 @@ exports.create = (req,res)=>{
         res.status(400).send({ message : "Content can not be emtpy!"});
         return;
     }
-
     // new user
     const user = new Userdb({
         Question : req.body.Question,
@@ -15,9 +14,10 @@ exports.create = (req,res)=>{
         Option2: req.body.Option2,
         Option3 : req.body.Option3,
         Option4: req.body.Option4,
-        IsCorrect : req.body.IsCorrect
+        IsCorrect : req.body.IsCorrect,
+        essayQuestion:req.body.essayQuestion,
+        Description:req.body.Description,
     })
-
     // save user in the database
     user
         .save(user)
@@ -47,9 +47,8 @@ exports.find = (req, res)=>{
                 }
             })
             .catch(err =>{
-                res.status(500).send({ message: "Erro retrieving user with id " + id})
+                res.status(500).send({ message: "Error retrieving user with id " + id})
             })
-
     }else{
         Userdb.find()
             .then(user => {

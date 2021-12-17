@@ -25,6 +25,14 @@ var schema = new mongoose.Schema({
         type: String,
         required: true
     },
+    essayQuestion:{
+        type:String,
+        required:true
+    },
+    Description:{
+        type:String,
+        required:true
+    },
     IsCorrect: {
         type: String,
         required: true,

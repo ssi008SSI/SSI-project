@@ -1,7 +1,6 @@
 const express = require('express');
 const route = express.Router()
 const First=require("../../models/first");
-const Questions=require("../../models/new");
 const services = require('../services/render');
 const controller = require('../controller/controller');
 /**
@@ -40,7 +39,7 @@ route.get("/table", (req, res) => {
   res.render("table")
 });
 route.get("/mcq", (req, res) => {
-    
+
     First.find({},(err, data) => {
         res.render("mcq", {
             use1:data
@@ -50,7 +49,7 @@ route.get("/mcq", (req, res) => {
     });
 });
 route.get("/essay", (req, res) => {
-    Questions.find({}, function (err, data) {
+    First.find({}, function (err, data) {
         const random = Math.floor(Math.random() * data.length);
         console.log(random);
         res.render("essay", {
