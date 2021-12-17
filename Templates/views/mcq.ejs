@@ -1,10 +1,9 @@
 <%- include('header'); -%>
-    <!-- Navbar - End -->
     <!-- MCQ - Start -->
     <div class="wrapper mb-4 ">
         <div class="container card-body align-self-center">
-            <% use1.forEach(function(neww){   %> 
-            <h6><%= neww.Question %></h6>
+            <% use1.forEach(function(neww){  %> 
+            <h6 ><%= neww.Question %></h6>
             <hr>
             <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
                 laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
@@ -23,7 +22,6 @@
                         id="flexRadioDefault1" value="<%= neww.Option2 %>">
                 <label class="checkbox form-check-label" for="flexRadioDefault1" name="ans" >
                     <%=neww.Option2 %>
-                    
                 </label>
                 </div>
                 <div class="checkbox form-check my-3">
