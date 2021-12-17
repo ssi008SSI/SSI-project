@@ -5,7 +5,6 @@ const app = express();
 const db= require("./db/conn.js");
 const Register = require("./models/registers");
 const Response = require("./models/userResponse");
-const { Mongoose } = require("mongoose");
 const port = process.env.PORT || 3000;
 //admin login credentials
 const credential = {
@@ -63,8 +62,7 @@ app.post('/register', async (req, res) => {
                 app.post('/essay', async (req, res) => {
                         const { essay } = req.body;
                         const newEssay = new Response({ _id: newUser._id, email, useranswer: ans, userDescription: essay });
-                        await newEssay.save();
-                        db.disconnect();
+                        await newEssay.save();                   
                         res.redirect('final');
                     });
             }   
