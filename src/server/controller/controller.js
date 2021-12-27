@@ -11,12 +11,12 @@ exports.create = (req,res)=>{
     const user = new Userdb({
         Question : req.body.Question,
         Option1 : req.body.Option1,
-        Option2: req.body.Option2,
+        Option2 : req.body.Option2,
         Option3 : req.body.Option3,
-        Option4: req.body.Option4,
+        Option4 : req.body.Option4,
         IsCorrect : req.body.IsCorrect,
-        essayQuestion:req.body.essayQuestion,
-        Description:req.body.Description,
+        essayQuestion : req.body.essayQuestion,
+        Description : req.body.Description,
     })
     // save user in the database
     user
@@ -31,23 +31,21 @@ exports.create = (req,res)=>{
             });
         });
 }
-
 // retrieve and return all users/ retrive and return a single user
 exports.find = (req, res)=>{
 
     if(req.query.id){
         const id = req.query.id;
-
         Userdb.findById(id)
             .then(data =>{
                 if(!data){
-                    res.status(404).send({ message : "Not found user with id "+ id})
+                    res.status(404).send({ message : "Not found question with id "+ id})
                 }else{
                     res.send(data)
                 }
             })
             .catch(err =>{
-                res.status(500).send({ message: "Error retrieving user with id " + id})
+                res.status(500).send({ message: "Error retrieving question with id " + id})
             })
     }else{
         Userdb.find()
@@ -55,7 +53,7 @@ exports.find = (req, res)=>{
                 res.send(user)
             })
             .catch(err => {
-                res.status(500).send({ message : err.message || "Error Occurred while retriving user information" })
+                res.status(500).send({ message : err.message || "Error Occurred while retriving question" })
             })
     }
 }
@@ -71,33 +69,32 @@ exports.update = (req, res)=>{
     Userdb.findByIdAndUpdate(id, req.body, { useFindAndModify: false})
         .then(data => {
             if(!data){
-                res.status(404).send({ message : `Cannot Update user with ${id}. Maybe user not found!`})
+                res.status(404).send({ message : `Cannot Update question with ${id}. Maybe question not found!`})
             }else{
                 res.send(data)
             }
         })
         .catch(err =>{
-            res.status(500).send({ message : "Error Update user information"})
+            res.status(500).send({ message : "Error Update question information"})
         })
 }
 
 // Delete a user with specified user id in the request
 exports.delete = (req, res)=>{
     const id = req.params.id;
-
     Userdb.findByIdAndDelete(id)
         .then(data => {
             if(!data){
                 res.status(404).send({ message : `Cannot Delete with id ${id}. Maybe id is wrong`})
             }else{
                 res.send({
-                    message : "User was deleted successfully!"
+                    message : "question was deleted successfully!"
                 })
             }
         })
         .catch(err =>{
             res.status(500).send({
-                message: "Could not delete User with id=" + id
+                message: "Could not delete question with id=" + id
             });
         });
 }

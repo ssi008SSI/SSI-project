@@ -15,8 +15,11 @@ let ans;
 // always use double underscore while giving the dirname name path.
 const static_path = path.join(__dirname, "../public");
 const template_path = path.join(__dirname, "../templates/views");
+
 // this console command is to show the folder,file structure
 // console.log(path.join(__dirname,"../public"));
+
+//middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(static_path));
@@ -39,12 +42,14 @@ app.post('/register', async (req, res) => {
         const { firstname, myemail, mypassword } = req.body;
         const email=myemail
         const password=mypassword
+        const username=firstname
         console.log(req.body);
         console.log({email, password, firstname});
         const user = await Register.findOne({ email });
         console.log(user);
         if (user != null) {
             console.log("Your response has already been submitted!");
+            res.redirect("final")
         }
         else
         {
@@ -52,14 +57,14 @@ app.post('/register', async (req, res) => {
         await newUser.save()
         res.redirect('permission')
                 app.post('/mcq', async (req, res) => {
-                     ans = req.body.ans;
+                    ans = req.body.ans;
                     console.log({ ans });
                     console.log(req.body.ans);
                     res.redirect("essay")
                 });
                 app.post('/essay', async (req, res) => {
                         const { essay } = req.body;
-                        const newEssay = new Response({ _id: newUser._id, email, useranswer: ans, userDescription: essay });
+                        const newEssay = new Response({ _id: newUser._id, username:username , email, useranswer: ans, userDescription: essay });
                         await newEssay.save();                   
                         res.redirect('final');
                     });

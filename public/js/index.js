@@ -1,10 +1,6 @@
-
-
-
 $("#add_user").submit(function(event){
     alert("Data Inserted Successfully!");
 })
-
 $("#update_user").submit(function(event){
     event.preventDefault();
 
@@ -14,8 +10,6 @@ $("#update_user").submit(function(event){
     $.map(unindexed_array, function(n, i){
         data[n['name']] = n['value']
     })
-
-
     var request = {
         "url" : `http://localhost:3000/api/users/${data.id}`,
         "method" : "PUT",
@@ -26,9 +20,7 @@ $("#update_user").submit(function(event){
     $.ajax(request).done(function(response){
         alert("Data Updated Successfully!");
     })
-
 })
-
 if(window.location.pathname == "/admin"){
     $ondelete = $(".table tbody td a.delete");
     $ondelete.click(function(){
